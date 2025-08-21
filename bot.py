@@ -2,11 +2,11 @@ import os
 import site
 import subprocess
 
-LOCAL_SITE_PACKAGES = "/home/container/.local/lib/python3.11/site-packages"
+LOCAL_SITE_PACKAGES = ".local/lib/python3.11/site-packages"
 if not os.path.exists(LOCAL_SITE_PACKAGES):
     print("📦 Installation des packages...")
     subprocess.call([
-        "pip", "install", "--prefix=/home/container/.local", "-r", "/home/container/requirements.txt"
+        "pip", "install", "--prefix=.local", "-r", "requirements.txt"
     ])
 else:
     print("✅ Packages trouvés")
@@ -44,3 +44,4 @@ async def on_ready():
     print(f"🤖 Bot connecté : {bot.user}")
 
 bot.run(os.getenv("DISCORD_TOKEN"))
+
